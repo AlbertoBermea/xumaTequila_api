@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 
 if ( process.env.NODE_ENV === 'production') {
-  mapbax_token = process.env.connectionURL
+  connectionURL = process.env.DB_CONNECTION_STRING
 } else {
   const config = require('../config.js')
   connectionURL = config.connectionURL
