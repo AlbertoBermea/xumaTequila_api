@@ -1,6 +1,7 @@
 const User = require('../models/user')
 
-// ya no debería tener esta ruta a menos que sea un usuario tipo admin
+// GET USERS ya no esta en routes.js ya que un usuario no debería tener acceso
+// a la informacion de TODOS los usuarios a menos que sea administrador
 const getUsers = function(req, res) {
   User.find({}).then(function(users) {
     res.send(users)
@@ -10,19 +11,16 @@ const getUsers = function(req, res) {
 }
 
 const getUser = function(req, res) {
-  // cualquier usuario no deberia ser capaz de ver la info de un usuario
-  // a menos que sea un admin. Aqui yo ya no admitire que me pasen el :id 
-  // solo usare el id de la request-> req.user._id
+  // cualquier usuario no deberia ser capaz de ver la info de otro usuario
+  // a menos que sea un admin. Aqui yo ya no admitire que me pasen el :id como
+  // parametro. Solo usare el id de la request-> req.user._id
   // como ya tenemos toda la info del usuario gracias a auth
   // ya no necesitamos hacer un User.findOne de nuevo!,
   // todo esta en req.user
   // solo nos faltaria agregar los todos del Schema Todo
-  // req.user.populate()
-  // req.user
-  // User.findById(_id).then(function(user) {
-  //   if(!user){
-  //     return res.status(404).send()
-  //   }
+  // y eso se usa con lo siguiente:
+  // req.user.populate() Donde
+
   User.findById( req.user._id ).populate('todos').exec(function(error, user) {
   // req.user.populate('todos').exec(function(error, user) {  
     // user ya tiene la info de req.user y req.user.todos
@@ -42,6 +40,7 @@ const createUser = function(req, res){
 }
 
 const login = function(req, res) {
+  console.log(req.body)
   User.findByCredentials(req.body.email, req.body.password).then(function(user){
     user.generateToken().then(function(token){
       return res.send({user, token})
@@ -67,7 +66,7 @@ const logout = function(req, res) {
 
 const updateUser = function(req, res) {
   // solo admitire hacer update de mi usuario que hizo login
-  // quitare la ruta de PATCH users/:id y la cambiare solo por PATCH /users
+  // quité la ruta de PATCH users/:id y la cambie por PATCH /users
   // const _id = req.params.id
   const _id = req.user._id
   const updates = Object.keys(req.body)

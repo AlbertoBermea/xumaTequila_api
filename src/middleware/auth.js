@@ -2,17 +2,10 @@ const jwt = require('jsonwebtoken')
 
 const User = require('../models/user')
 
-if ( process.env.NODE_ENV === 'production') {
-  var secret = process.env.SECRET
-} else {
-  const config = require('../config.js')
-  var secret = config.secret
-}
-
 const auth = function( req, res, next ) {
   try {
     const token = req.header('Authorization').replace('Bearer ', '')
-    const decoded = jwt.verify(token, secret)
+    const decoded = jwt.verify(token, 'suSuperSecret')
     User.findOne({ _id: decoded._id, 'tokens.token': token }).then(function(user) {
       if(!user) {
         throw new Error()
@@ -21,10 +14,10 @@ const auth = function( req, res, next ) {
       req.user = user
       next()
     }).catch(function(error) {
-      res.status(401).send({ error: 'Authenticate plz'})
+      res.status(401).send({ error: 'Please authenticate'})
     })
   } catch(e) {
-    res.status(401).send({ error: 'Authenticate plz'})
+    res.status(401).send({ error: 'Please authenticate'})
   }
 }
 
