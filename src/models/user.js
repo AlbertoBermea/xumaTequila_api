@@ -14,8 +14,8 @@ const userSchema = new mongoose.Schema({
     type: Number,
     required: true,
     validate(value) {
-      if ( value < 13 ) {
-        throw new Error('Debes ser mayor de 13 años')
+      if ( value < 18 ) {
+        throw new Error('Debes ser mayor de 17 años')
       }
     }
   },
@@ -34,6 +34,11 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 3,
     trim: true
+  },
+  admin: {
+    type: Boolean,
+    required: true,
+    default: false,
   },
   tokens: [{
     token: {
@@ -55,6 +60,12 @@ userSchema.virtual('todos', {
   ref: 'Todo',
   localField: '_id',
   foreignField: 'createdBy'
+})
+
+userSchema.virtual('carts', {
+  ref: 'Cart',
+  localField: '_id',
+  foreignField: 'user'
 })
 
 userSchema.methods.toJSON = function() {

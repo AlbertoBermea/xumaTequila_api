@@ -1,7 +1,6 @@
 {
   "name": "mongo",
   "version": "1.0.0",
-  "description": "",
   "main": "mongo.js",
   "scripts": {
     "start": "node src/app.js"
@@ -17,5 +16,15 @@
     "mongodb": "^3.2.2",
     "mongoose": "^5.5.1",
     "validator": "^10.11.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlbertoBermea/ExamFinal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AlbertoBermea/ExamFinal/issues"
+  },
+  "homepage": "https://github.com/AlbertoBermea/ExamFinal#readme",
+  "description": ""
 }
