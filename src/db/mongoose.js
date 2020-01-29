@@ -7,8 +7,8 @@ if ( process.env.NODE_ENV === 'production') {
   const config = require('../config.js')
   connectionURL = config.connectionURL
 }
-console.log()
 
+console.log(connectionURL)
 // revisa tu connectionURL aqui :-)
 
 mongoose.connect( connectionURL, {
