@@ -4,6 +4,7 @@ var cors = require('cors');
 
 const router = require('./routes')
 
+console.log("simon")
 
 const app = express()
 const port = process.env.PORT || 3000
