@@ -8,7 +8,7 @@ if ( process.env.NODE_ENV === 'production') {
   connectionURL = config.connectionURL
 }
 
-console.log(connectionURL)
+//console.log(connectionURL)
 // revisa tu connectionURL aqui :-)
 
 mongoose.connect( connectionURL, {
