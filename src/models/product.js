@@ -31,6 +31,11 @@ const productSchema = new mongoose.Schema({
 		required: true,
 		default: true
 	},
+	size: {
+		type: String,
+		required: true,
+		default: "Medium"
+	}
 })
 
 const product = mongoose.model('Products', productSchema)

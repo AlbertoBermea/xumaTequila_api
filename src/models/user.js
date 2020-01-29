@@ -62,12 +62,6 @@ userSchema.virtual('todos', {
   foreignField: 'createdBy'
 })
 
-userSchema.virtual('carts', {
-  ref: 'Cart',
-  localField: '_id',
-  foreignField: 'user'
-})
-
 userSchema.methods.toJSON = function() {
   const user = this
   const userObject = user.toObject()

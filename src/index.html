@@ -1,0 +1,31 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+
+</head>
+
+<body>
+    <h1>hello</h1>
+    <script>
+
+        var user = [{'name':'John'}];
+        sessionStorage.setItem('user', JSON.stringify(user));
+        var obj = JSON.parse(sessionStorage.user);
+        console.log(obj)
+        obj.push({
+            'otro':'jeje'
+        })
+        console.log(obj)
+        sessionStorage.setItem('user', JSON.stringify(obj));
+        var obj = JSON.parse(sessionStorage.user);
+        console.log(obj)
+    </script>
+</body>
+</html>
