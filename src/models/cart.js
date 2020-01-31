@@ -12,7 +12,10 @@ const cartSchema = new mongoose.Schema({
         type: Number,
 		required: true
     },
-    
+    cost: {
+        type: Number, 
+        required: true
+    }    
 })
 
 const cart = mongoose.model('Cart', cartSchema)
