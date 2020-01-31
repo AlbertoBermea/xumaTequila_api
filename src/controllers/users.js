@@ -11,6 +11,7 @@ const getUsers = function(req, res) {
 }
 
 const getUser = function(req, res) {
+  const _id = req.params.id
   // cualquier usuario no deberia ser capaz de ver la info de otro usuario
   // a menos que sea un admin. Aqui yo ya no admitire que me pasen el :id como
   // parametro. Solo usare el id de la request-> req.user._id
@@ -20,14 +21,11 @@ const getUser = function(req, res) {
   // solo nos faltaria agregar los todos del Schema Todo
   // y eso se usa con lo siguiente:
   // req.user.populate() Donde
-
-  User.findById( req.user._id ).populate('todos').exec(function(error, user) {
-  // req.user.populate('todos').exec(function(error, user) {  
-    // user ya tiene la info de req.user y req.user.todos
-    return res.send(user)
+  User.find({_id}).then(function(users) {
+    res.send(users)
+  }).catch(function(error){
+    res.status(500).send(error)
   })
-  // }).catch(function(error) {
-  //   return res.status(500).send(error)
 }
 
 const createUser = function(req, res){

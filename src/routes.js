@@ -8,7 +8,7 @@ const auth = require('./middleware/auth')
 const authAdmin = require('./middleware/authAdmin')
 
 router.get('/users',  users.getUsers)
-router.get('/user',  users.getUser)
+router.get('/user/:id',  users.getUser)
 router.post('/login', users.login)
 router.post('/logout',  users.logout)
 router.post('/users', users.createUser)  // signup
