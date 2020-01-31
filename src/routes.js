@@ -15,7 +15,6 @@ router.post('/users', users.createUser)  // signup
 router.patch('/users', users.updateUser)
 router.delete('/users', users.deleteUser)
 
-
 router.get('/product/:id',products.getProduct) //buscar producto por id
 router.get('/products',products.getProducts) //buscar todos los productos
 router.get('/productsCat/:category',products.getProductsCat) //buscar los productos de una cateroia especifica
