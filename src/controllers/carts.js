@@ -45,16 +45,15 @@ const updateCartItem = function(req, res) {
       res.status(505).send({ error: error })
     })
   }
-
+//esto aun esta mal
   const deleteCartsUser = function(req, res) {
     const user = req.params.user
-    Cart.deleteMany( user ).then(function(cart){
-      if(!cart) {
-        return res.status(404).send({ error: `Cart Item with id ${_id} not found.`})
-      }
-      return res.send(cart)
-    }).catch(function(error) {
-      res.status(505).send({ error: error })
+    Cart.deleteMany( {user},function(err,result){
+        if(err){
+            res.send(err);
+        }else{
+            res.send(result);
+        }
     })
   }
   
@@ -73,5 +72,6 @@ const updateCartItem = function(req, res) {
       createCartItem: createCartItem,
       deleteCartItem: deleteCartItem,
       updateCartItem: updateCartItem,
-      getCartItemsByCustomer: getCartItemsByCustomer
+      getCartItemsByCustomer: getCartItemsByCustomer,
+      deleteCartsUser: deleteCartsUser
   }

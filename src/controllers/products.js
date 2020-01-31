@@ -39,7 +39,7 @@ const createProduct = function(req, res){
 
   const deleteProduct = function(req, res) {
     const _id = req.params.id
-    Product.findOneAndDelete( _id ).then(function(product){
+    Product.findOneAndDelete( {_id} ).then(function(product){
       if(!product) {
         return res.status(404).send({ error: `Product with id ${_id} not found.`})
       }
