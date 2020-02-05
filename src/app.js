@@ -13,7 +13,7 @@ const port = process.env.PORT || 3000
 app.use(function(req,res,next){
   res.header("Accesss-Control-Allow-Origin","*")
   res.header("Accesss-Control-Allow-Header","Origin, X-Requested-With,Content_Type, Accept");
-  res.header("Accesss-Control-Allow-Methods","GET,POST,OPTIONS,PUT,DELETE,UPDATE");
+  res.header("Accesss-Control-Allow-Methods","GET,POST,OPTIONS,PUT,DELETE,UPDATE,PATCH");
   next();
 })
 
