@@ -27,6 +27,7 @@ router.post('/cart',cart.createCartItem)
 router.patch('/cart/:id',cart.updateCartItem)
 router.delete('/cart/:id',cart.deleteCartItem)
 router.delete('/cartUser/:user',cart.deleteCartsUser)
+router.get('/cart/:user/:product',cart.cartExist)
 
 router.get('*', function(req, res) {
   res.send({

@@ -68,10 +68,21 @@ const updateCartItem = function(req, res) {
     })
   }
 
+  const cartExist = function(req,res){
+    const user = req.params.user
+    const product = req.params.product
+    Cart.find({user,product}).then(function(cart) {
+      res.send(cart)
+    }).catch(function(error){
+      res.status(500).send(error)
+    })
+  }
+
   module.exports = {
       createCartItem: createCartItem,
       deleteCartItem: deleteCartItem,
       updateCartItem: updateCartItem,
       getCartItemsByCustomer: getCartItemsByCustomer,
-      deleteCartsUser: deleteCartsUser
+      deleteCartsUser: deleteCartsUser,
+      cartExist: cartExist
   }
