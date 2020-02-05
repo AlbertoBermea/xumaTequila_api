@@ -16,9 +16,10 @@ app.use(router)
 app.use(routerImage)
 
 app.use(function(req,res,next){
-  res.header("Acces-Control-Allow-Origin","*")
-  res.header("Acces-Control-Allow-Header","Origin, X-Requested-With,Content_Type, Accept");
-  res.header("Acces-Control-Allow-Methods","GET,POST,OPTIONS,PUT,DELETE");
+  res.header("Accesss-Control-Allow-Origin","*")
+  res.header("Accesss-Control-Allow-Header","Origin, X-Requested-With,Content_Type, Accept");
+  res.header("Accesss-Control-Allow-Methods","GET,POST,OPTIONS,PUT,DELETE");
+  next();
 })
 
 app.listen(port, function() {
