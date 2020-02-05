@@ -15,6 +15,12 @@ app.use(express.json()) // parsea a json
 app.use(router)
 app.use(routerImage)
 
+app.use(function(req,res,next){
+  res.header("Acces-Control-Allow-Origin","*")
+  res.header("Acces-Control-Allow-Header","Origin, X-Requested-With,Content_Type, Accept");
+  res.header("Acces-Control-Allow-Methods","GET,POST,OPTIONS,PUT,DELETE");
+})
+
 app.listen(port, function() {
   console.log('Server up and running on port ' + port)
 })
